@@ -1,1 +1,28 @@
-<%= @entries.inspect %>
+<table>
+  <th>
+    <tr>
+      <td>
+        Entries
+      </td>
+      <td>Priority</td>
+      <td>Due Date</td>
+      <td></td>
+    </tr>
+  </th>
+  <tbody>
+    <% current_user.entries.each do |entry| %>
+    <tr>
+      <td>
+        <%= entry.body %>
+      </td>
+      <td>
+        <%= entry.priority %>
+      </td>
+      <td>
+        <%= entry.due_date %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= button_to "Edit", {:action => :edit}, :method => :get %>

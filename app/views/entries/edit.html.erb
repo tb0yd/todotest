@@ -1,7 +1,34 @@
-<%= current_user.entries.size %>
 <%= form_for current_user, :url => {:controller => :entries, :action => :update}, :method => :post do |f| %>
+<table>
+  <th>
+    <tr>
+      <td>
+        Entries
+      </td>
+      <td>Priority</td>
+      <td>Due Date</td>
+      <td></td>
+    </tr>
+  </th>
+  <tbody>
     <%= f.fields_for :entries do |e| %>
-      <%= e.text_field :body %>
+    <tr>
+      <td>
+        <%= e.text_field :body %>
+      </td>
+      <td>
+        <%= e.text_field :priority %>
+      </td>
+      <td>
+        <%= e.text_field :due_date %>
+      </td>
+      <td>
+        <button type="button" class="delButton">Delete</button>
+      </td>
+    </tr>
     <% end %>
-  <%= f.submit %>
+  </tbody>
+</table>
+<%= f.submit "Save List" %>
+<button type="button" id="addButton">Add</button>
 <% end %>
