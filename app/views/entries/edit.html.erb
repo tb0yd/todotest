@@ -1,17 +1,16 @@
+<%= button_to "Go Back", controller.params.merge(:action => :index), :method => :get %>
 <%= form_for current_user, :url => {:controller => :entries, :action => :update}, :method => :post do |f| %>
 <table>
   <th>
     <tr>
-      <td>
-        Entries
-      </td>
-      <td>Priority</td>
-      <td>Due Date</td>
+      <td><%= link_to "Entries", edit_entries_path(:order => "body") %></td>
+      <td><%= link_to "Priority", edit_entries_path(:order => "priority desc") %></td>
+      <td><%= link_to "Due Date", edit_entries_path(:order => "due_date desc") %></td>
       <td></td>
     </tr>
   </th>
   <tbody>
-    <%= f.fields_for :entries do |e| %>
+    <%= f.fields_for :entries, @entries do |e| %>
     <tr>
       <td>
         <%= e.text_field :body %>
@@ -30,5 +29,5 @@
   </tbody>
 </table>
 <%= f.submit "Save List" %>
-<button type="button" id="addButton">Add</button>
+<button type="button" id="addButton">Add Item</button>
 <% end %>

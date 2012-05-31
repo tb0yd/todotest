@@ -1,16 +1,14 @@
 <table>
   <th>
     <tr>
-      <td>
-        Entries
-      </td>
-      <td>Priority</td>
-      <td>Due Date</td>
+      <td><%= link_to "Entries", entries_path(:order => "body") %></td>
+      <td><%= link_to "Priority", entries_path(:order => "priority desc") %></td>
+      <td><%= link_to "Due Date", entries_path(:order => "due_date desc") %></td>
       <td></td>
     </tr>
   </th>
   <tbody>
-    <% current_user.entries.each do |entry| %>
+    <% @entries.each do |entry| %>
     <tr>
       <td>
         <%= entry.body %>
@@ -25,4 +23,4 @@
     <% end %>
   </tbody>
 </table>
-<%= button_to "Edit", {:action => :edit}, :method => :get %>
+<%= button_to "Edit", controller.params.merge(:action => :edit), :method => :get %>
