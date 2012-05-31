@@ -1,7 +1,7 @@
 TodoTest::Application.routes.draw do
-  get "/entries", :to => "entries#index"
-  get "/entries/edit", :to => "entries#edit", :as => :edit_entries
-  post "/entries", :to => "entries#update", :as => :update_entries
+  get "/", :to => "entries#index", :as => :entries
+  get "/edit", :to => "entries#edit", :as => :edit_entries
+  post "/", :to => "entries#update", :as => :update_entries
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
