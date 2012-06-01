@@ -6,6 +6,7 @@
       <td><%= link_to "Entries", edit_entries_path(:order => "body") %></td>
       <td><%= link_to "Priority", edit_entries_path(:order => "priority desc") %></td>
       <td><%= link_to "Due Date", edit_entries_path(:order => "due_date desc") %></td>
+      <td>Completed?</td>
       <td></td>
     </tr>
   </th>
@@ -20,6 +21,9 @@
       </td>
       <td>
         <%= e.text_field :due_date %>
+      </td>
+      <td>
+        <%= e.check_box :completed %>
       </td>
       <td>
         <button type="button" class="delButton">Delete</button>

@@ -10,4 +10,8 @@ $(function() {
 		var newInputName = row.find("input").first().attr("name").replace("body","_destroy");
 		$(this).after("<input type='hidden' name='"+newInputName+"' value='1'></input>");
 	});
+
+	$("#indexForm input[type=checkbox]").change(function() {
+		$("#indexForm").submit();
+	});
 });
