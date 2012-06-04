@@ -11,6 +11,15 @@ $(function() {
 		$(this).after("<input type='hidden' name='"+newInputName+"' value='1'></input>");
 	});
 
+	$(".editButton").live("click", function() {
+		$.get($(this).closest("form").attr("action"), function(data, msg) {
+			if(msg == "success") {
+				$("body").html(data);
+			}
+		});
+		return false;
+	});
+
 	$("#indexForm input[type=checkbox]").change(function() {
 		$("#indexForm").submit();
 	});
