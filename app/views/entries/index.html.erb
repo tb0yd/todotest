@@ -1,10 +1,10 @@
-<%= form_for current_user, :url => {:controller => :entries, :action => :update}, :method => :post, :remote => true, :html => {:id => "indexForm"} do |f| %>
+<%= form_for current_user, :url => {:controller => :entries, :action => :update}.merge(:order => controller.params[:order]), :method => :post, :remote => true, :html => {:id => "indexForm"} do |f| %>
   <table>
     <th>
       <tr>
-        <td><%= link_to "Entries", entries_path(:order => "body") %></td>
-        <td><%= link_to "Priority", entries_path(:order => "priority desc") %></td>
-        <td><%= link_to "Due Date", entries_path(:order => "due_date desc") %></td>
+        <td><%= link_to "Entries", entries_path(:order => "body"), :remote => true %></td>
+        <td><%= link_to "Priority", entries_path(:order => "priority desc"), :remote => true %></td>
+        <td><%= link_to "Due Date", entries_path(:order => "due_date desc"), :remote => true %></td>
         <td>Completed?</td>
       </tr>
     </th>
@@ -29,4 +29,4 @@
     </tbody>
   </table>
 <% end %>
-<%= button_to "Edit", edit_entries_path, :method => :get, :class => "editButton" %>
+<%= button_to "Edit", edit_entries_path, :method => :get, :remote => true, :class => "editButton" %>

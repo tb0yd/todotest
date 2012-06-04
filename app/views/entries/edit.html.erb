@@ -1,11 +1,11 @@
-<%= button_to "Go Back", controller.params.merge(:action => :index), :method => :get %>
-<%= form_for current_user, :url => {:controller => :entries, :action => :update}, :method => :post do |f| %>
+<%= button_to "Go Back", {:controller => :entries, :action => :index}.merge(:order => controller.params[:order]), :method => :get, :remote => true, :class => "goBackButton" %>
+<%= form_for current_user, :url => {:controller => :entries, :action => :update}.merge(:order => controller.params[:order]), :method => :post, :remote => true do |f| %>
 <table>
   <th>
     <tr>
-      <td><%= link_to "Entries", edit_entries_path(:order => "body") %></td>
-      <td><%= link_to "Priority", edit_entries_path(:order => "priority desc") %></td>
-      <td><%= link_to "Due Date", edit_entries_path(:order => "due_date desc") %></td>
+      <td><%= link_to "Entries", edit_entries_path(:order => "body"), :remote => true %></td>
+      <td><%= link_to "Priority", edit_entries_path(:order => "priority desc"), :remote => true %></td>
+      <td><%= link_to "Due Date", edit_entries_path(:order => "due_date desc"), :remote => true %></td>
       <td>Completed?</td>
       <td></td>
     </tr>
